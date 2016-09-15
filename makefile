@@ -1,6 +1,6 @@
-OBJS = ./src/main.c ./src/heap.c
+OBJS = ./src/*.c
 
-DEPS = ./inc/heap.h
+DEPS = ./inc/*.h
 
 CC = gcc
 
@@ -8,5 +8,8 @@ COMPILER_FLAGS = -Wpedantic -Wall
 
 OBJ_NAME = huffman
 
-all : $(OBJS)
-	$(CC) $(OBJS) $(DEPS) $(COMPILER_FLAGS) -o $(OBJ_NAME)
+all :
+	$(CC) $(COMPILER_FLAGS) $(OBJS) $(DEPS) -o $(OBJ_NAME)
+
+clean :
+	rm huffman

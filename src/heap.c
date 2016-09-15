@@ -60,16 +60,12 @@ void enqueue(heap *heap, int value)
 
 	} else {
 		heap->data[++heap->size] = value;
-
 		int key_index = heap->size;
 		int parent_index = get_parent_index(heap, heap->size);
-
 		while (parent_index >= 1 && heap->data[key_index] >
 		       heap->data[parent_index]) {
-
 			swap(&heap->data[key_index],
 			     &heap->data[parent_index]);
-
 			key_index = parent_index;
 			parent_index = get_parent_index(heap, key_index);
 		}
@@ -91,17 +87,15 @@ void max_heapify(heap *heap, int i)
 	int largest;
 	int left_index = get_left_index(heap, i);
 	int right_index = get_right_index(heap, i);
-	if (left_index <= heap->size &&
-	    heap->data[left_index] > heap->data[i]) {
-
+	if (left_index <= heap->size && heap->data[left_index] >
+	    heap->data[i]) {
 		largest = left_index;
 	} else {
 		largest = i;
 	}
 
-	if (right_index <= heap->size &&
-	    heap->data[right_index] > heap->data[largest]) {
-
+	if (right_index <= heap->size && heap->data[right_index] >
+	    heap->data[largest]) {
 		largest = right_index;
 	}
 
