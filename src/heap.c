@@ -11,6 +11,7 @@
  */
 heap create_heap(void)
 {
+	heap *heap;
 	heap->size = 0;
 	return heap;
 }
