@@ -5,8 +5,8 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-/* Placeholder value */
-#define MAX_HEAP_SIZE 10
+/* The heap can potentially hold all ASCII characters */
+#define MAX_HEAP_SIZE 128
 
 typedef struct heap {
 	int size;
