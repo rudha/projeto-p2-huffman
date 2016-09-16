@@ -7,11 +7,12 @@
 
 
 /*
- * Not finished, find a better implementation
+ * Not finished*, find a better implementation
  */
-heap* create_heap(void)
+heap create_heap(void)
 {
-	return NULL;
+	heap->size = 0;
+	return heap;
 }
 
 
