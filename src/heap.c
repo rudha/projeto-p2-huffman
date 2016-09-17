@@ -11,8 +11,11 @@
  */
 heap create_heap(void)
 {
+	int i;
 	heap *heap;
 	heap->size = 0;
+	for (i=0; i<MAX_HEAP_SIZE; i++;)
+		heap->data[i] = 0;
 	return heap;
 }
 
