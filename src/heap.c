@@ -3,34 +3,35 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h> /* malloc() */
 #include "../inc/heap.h"
 
 
 /*
  * Not finished*, find a better implementation
  */
-heap create_heap(void)
+heap_t* create_heap(void)
 {
 	int i;
-	heap *heap;
+	heap_t *heap = (heap_t*) malloc(sizeof(heap_t));
 	heap->size = 0;
-	for (i=0; i<MAX_HEAP_SIZE; i++;)
+	for (i=0; i<MAX_HEAP_SIZE; i++)
 		heap->data[i] = 0;
 	return heap;
 }
 
 
-int get_parent_index(heap *heap, int i)
+int get_parent_index(heap_t *heap, int i)
 {
 	return i / 2;
 }
 
-int get_left_index(heap *heap, int i)
+int get_left_index(heap_t *heap, int i)
 {
 	return 2 * i;
 }
 
-int get_right_index(heap *heap, int i)
+int get_right_index(heap_t *heap, int i)
 {
 	return 2 * i + 1;
 }
@@ -39,7 +40,7 @@ int get_right_index(heap *heap, int i)
 /*
  * Can return garbage if heap->data[i] is not defined, see create_heap()
  */
-int value_of(heap *heap, int i)
+int value_of(heap_t *heap, int i)
 {
 	return heap->data[i];
 }
@@ -58,7 +59,7 @@ void swap(int *a, int *b)
 }
 
 
-void enqueue(heap *heap, int value)
+void enqueue(heap_t *heap, int value)
 {
 	if (heap->size >= MAX_HEAP_SIZE) {
 		printf("Heap is full!");
@@ -77,7 +78,7 @@ void enqueue(heap *heap, int value)
 	}
 }
 
-int dequeue(heap *heap)
+int dequeue(heap_t *heap)
 {
 	int value = heap->data[1];
 	heap->data[1] = heap->data[heap->size];
@@ -87,7 +88,7 @@ int dequeue(heap *heap)
 }
 
 
-void max_heapify(heap *heap, int i)
+void max_heapify(heap_t *heap, int i)
 {
 	int largest;
 	int left_index = get_left_index(heap, i);
@@ -111,7 +112,7 @@ void max_heapify(heap *heap, int i)
 }
 
 
-void heapsort(heap *heap)
+void heapsort(heap_t *heap)
 {
 	int i;
 	for (i = heap->size; i >= 2; i--) {
